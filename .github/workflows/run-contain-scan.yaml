@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  VERSION: $(( github.run_number ))
+  VERSION: ${{ github.run_number }}
 
 jobs:
   run_container_image_scan_on_supermario_docker_image:
@@ -21,8 +21,8 @@ jobs:
 
       - name: Get Docker Image from Docker Hub
         run: |
-          docker pull docker.io/ernnest/devsecops:mario-game:1.0.0
-          docker save -o supermariolatestdockerimage.tar docker.io/ernnest/devsecops:mario-game:1.0.0
+          docker pull docker.io/ernnest/devsecops:mario-game-1.0.0
+          docker save -o supermariolatestdockerimage.tar docker.io/ernnest/devsecops:mario-game-1.0.0
 
       - name: Run Trivy vulnerability scanner in tarball mode
         uses: aquasecurity/trivy-action@master
